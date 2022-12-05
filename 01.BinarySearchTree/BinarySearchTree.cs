@@ -104,6 +104,11 @@
 
         public int Rank(T element)
         {
+            return this.Rank(element, this.root);
+        }
+
+        private int Rank(T element, Node root)
+        {
             throw new NotImplementedException();
         }
 
