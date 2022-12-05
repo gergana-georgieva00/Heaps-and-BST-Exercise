@@ -16,6 +16,7 @@
             public T Value { get; }
             public Node Left { get; set; }
             public Node Right { get; set; }
+            public int Count { get; set; }
         }
 
         private Node root;
@@ -81,12 +82,24 @@
             }
 
             node.Left = this.DeleteMin(node.Left);
+            node.Count = 1 + this.Count(node.Left) + this.Count(node.Right);
+
             return node;
         }
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return this.Count(this.root);
+        }
+
+        private int Count(Node node)
+        {
+            if (node is null)
+            {
+                return 0;
+            }
+
+            return node.Count;
         }
 
         public int Rank(T element)
@@ -96,7 +109,7 @@
 
         public T Select(int rank)
         {
-            throw new NotImplementedException();
+            Node node = 
         }
 
         public T Ceiling(T element)
@@ -191,6 +204,7 @@
                 node.Right = this.Insert(element, node.Right);
             }
 
+            node.Count = 1 + this.Count(node.Left) + this.Count(node.Right);
             return node;
         }
 
