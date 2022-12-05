@@ -48,14 +48,45 @@
             var secondNodeAncestors = this.FindAncestors(secondNode);
         }
 
-        private Queue<T> FindAncestors(BinaryTree<T> firstNode)
+        private Queue<T> FindAncestors(BinaryTree<T> node)
         {
-            throw new NotImplementedException();
+            var result = new Queue<T>();
+
+            var current = node;
+
+            while (current != null)
+            {
+                result.Enqueue(current.Value);
+                current = current.Parent;
+            }
+
+            return result;
         }
 
-        private BinaryTree<T> FindBfs(T first, BinaryTree<T> binaryTree)
+        private BinaryTree<T> FindBfs(T element, BinaryTree<T> node)
         {
-            throw new NotImplementedException();
+            var queue = new Queue<BinaryTree<T>>();
+            queue.Enqueue(node);
+
+            while (queue.Count != 0)
+            {
+                var current = queue.Dequeue();
+
+                if (element.Equals(node.Value))
+                {
+                    return current;
+                }
+                if (node.LeftChild != null)
+                {
+                    queue.Enqueue(node.LeftChild);
+                }
+                if (node.RightChild != null)
+                {
+                    queue.Enqueue(node.RightChild);
+                }
+            }
+
+            return null;
         }
     }
 }
