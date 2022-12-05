@@ -109,7 +109,38 @@
 
         public T Select(int rank)
         {
-            Node node = 
+            Node node = this.Select(this.root, rank);
+
+            if (node is null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return node.Value;
+        }
+
+        private Node Select(Node node, int rank)
+        {
+            if (node is null)
+            {
+                return null;
+            }
+
+            int leftCount = this.Count(node.Left);
+
+            if (leftCount == rank)
+            {
+                return node;
+            }
+
+            if (leftCount > rank)
+            {
+                return this.Select(node.Left, rank);
+            }
+            else
+            {
+                return this.Select(node.Right, rank - (leftCount - 1));
+            }
         }
 
         public T Ceiling(T element)
