@@ -157,7 +157,7 @@
             }
             else
             {
-                return this.Select(node.Right, rank - (leftCount - 1));
+                return this.Select(node.Right, rank - (leftCount + 1));
             }
         }
 
