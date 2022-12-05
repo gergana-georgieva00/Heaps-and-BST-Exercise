@@ -75,10 +75,13 @@
 
         private Node DeleteMin(Node node)
         {
-            if (true)
+            if (node.Left is null)
             {
-
+                return node.Right;
             }
+
+            node.Left = this.DeleteMin(node.Left);
+            return node;
         }
 
         public int Count()
