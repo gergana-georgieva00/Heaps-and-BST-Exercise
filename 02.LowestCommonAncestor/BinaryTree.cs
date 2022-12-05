@@ -48,7 +48,7 @@
             var secondNodeAncestors = this.FindAncestors(secondNode);
         }
 
-        private object FindAncestors(BinaryTree<T> firstNode)
+        private Queue<T> FindAncestors(BinaryTree<T> firstNode)
         {
             throw new NotImplementedException();
         }
