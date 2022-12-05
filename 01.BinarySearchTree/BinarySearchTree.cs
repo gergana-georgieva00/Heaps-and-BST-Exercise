@@ -168,7 +168,7 @@
 
         public T Floor(T element)
         {
-            throw new NotImplementedException();
+            return this.Select(this.Rank(element) - 1);
         }
 
         public IEnumerable<T> Range(T startRange, T endRange)
