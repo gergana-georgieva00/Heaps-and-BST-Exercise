@@ -163,7 +163,7 @@
 
         public T Ceiling(T element)
         {
-            throw new NotImplementedException();
+            return this.Select(this.Rank(element) + 1);
         }
 
         public T Floor(T element)
