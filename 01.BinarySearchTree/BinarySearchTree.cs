@@ -65,7 +65,20 @@
 
         public void DeleteMin()
         {
-            throw new NotImplementedException();
+            if (this.root is null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            this.root = this.DeleteMin(this.root);
+        }
+
+        private Node DeleteMin(Node node)
+        {
+            if (true)
+            {
+
+            }
         }
 
         public int Count()
