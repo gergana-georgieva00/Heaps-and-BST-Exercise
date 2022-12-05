@@ -95,7 +95,31 @@
 
         public IEnumerable<T> Range(T startRange, T endRange)
         {
-            throw new NotImplementedException();
+            this.Range(this.root, startRange, endRange);
+        }
+
+        private void Range(Node node, T startRange, T endRange)
+        {
+            if (node is null)
+            {
+                return;
+            }
+
+            var nodeInLowerRange = startRange.CompareTo(node.Value) < 0;
+            var nodeInUpperRange = startRange.CompareTo(node.Value) < 0;
+
+            if (nodeInLowerRange)
+            {
+                this.Range(node.Left, startRange, endRange);
+            }
+            if (startRange.CompareTo(node.Value) <= 0 && endRange.CompareTo(node.Value) >= 0)
+            {
+
+            }
+            if (nodeInUpperRange)
+            {
+                this.Range(node.Right, startRange, endRange);
+            }
         }
 
         private Node FindElement(T element)
