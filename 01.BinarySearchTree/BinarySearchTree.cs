@@ -95,10 +95,13 @@
 
         public IEnumerable<T> Range(T startRange, T endRange)
         {
-            this.Range(this.root, startRange, endRange);
+            var collection = new Queue<T>();
+            this.Range(this.root, startRange, endRange, collection);
+
+            return collection;
         }
 
-        private void Range(Node node, T startRange, T endRange)
+        private void Range(Node node, T startRange, T endRange, Queue<T> queue)
         {
             if (node is null)
             {
@@ -110,15 +113,15 @@
 
             if (nodeInLowerRange)
             {
-                this.Range(node.Left, startRange, endRange);
+                this.Range(node.Left, startRange, endRange, queue);
             }
             if (startRange.CompareTo(node.Value) <= 0 && endRange.CompareTo(node.Value) >= 0)
             {
-
+                queue.Enqueue(node.Value);
             }
             if (nodeInUpperRange)
             {
-                this.Range(node.Right, startRange, endRange);
+                this.Range(node.Right, startRange, endRange, queue);
             }
         }
 
