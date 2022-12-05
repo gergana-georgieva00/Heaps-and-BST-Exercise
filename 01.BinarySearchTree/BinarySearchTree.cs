@@ -107,9 +107,22 @@
             return this.Rank(element, this.root);
         }
 
-        private int Rank(T element, Node root)
+        private int Rank(T element, Node node)
         {
-            throw new NotImplementedException();
+            if (node is null)
+            {
+                return 0;
+            }
+            if (element.CompareTo(node.Value) < 0)
+            {
+                return this.Rank(element, node.Left);
+            }
+            if (element.CompareTo(node.Value) > 0)
+            {
+                return 1 + this.Count(node.Left) + this.Rank(element, node.Right);
+            }
+
+            return this.Count(node.Left);
         }
 
         public T Select(int rank)
