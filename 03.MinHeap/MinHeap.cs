@@ -18,7 +18,7 @@ namespace _03.MinHeap
 
         public void Add(T element)
         {
-            throw new NotImplementedException();
+            
         }
 
         public T ExtractMin()
