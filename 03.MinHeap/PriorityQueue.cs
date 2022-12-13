@@ -12,7 +12,13 @@ namespace _03.MinHeap
 
         public void Enqueue(T element)
         {
-            throw new NotImplementedException();
+            this.elements.Add(element);
+            this.HeapUp(this.Count - 1);
+        }
+
+        private void HeapUp(int v)
+        {
+            
         }
 
         public T Dequeue()
@@ -22,7 +28,8 @@ namespace _03.MinHeap
 
         public void DecreaseKey(T key)
         {
-            throw new NotImplementedException();
+            var index = this.elements.IndexOf(key);
+            HeapUp(index);
         }
     }
 }
