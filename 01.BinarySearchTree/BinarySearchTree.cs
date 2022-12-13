@@ -56,7 +56,7 @@
 
         public void Delete(T element)
         {
-            throw new NotImplementedException();
+           
         }
 
         public void DeleteMax()
